@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="EAD Oleohidraulica - Servicio Técnico Oficial de Hidro-Grubert, Palfinger e Hidráulica Móvil. Expertos en mantenimiento y reparación de equipos hidráulicos.">
+    <meta name="theme-color" content="#E31E24">
+    <title>EAD Oleohidraulica - STO H-G/Palfinger/Hidraulica Movil</title>
+    
+    <!-- Preconexiones -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://formsubmit.co">
+    
+    <!-- Precargar recursos críticos -->
+    <link rel="preload" as="image" href="EAD negro.png">
+    <link rel="preload" href="styles.css" as="style">
+    <link rel="preload" href="script.js" as="script">
+    
+    <!-- Estilos -->
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js" defer></script>
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <header>
+        <nav aria-label="Navegación principal">
+            <div class="logo">
+                <img src="EAD negro.png" alt="Logo EAD - Enzo A. Deux" width="84" height="84" loading="eager">
+                <div class="logo-info">
+                    <h1>Enzo A. Deux (HydroPampa)</h1>
+                    <p>Oleohidraulica en general</p>
+                </div>
+            </div>
+            <button class="menu-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu-principal">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul id="menu-principal" class="menu" role="menubar">
+                <li role="none"><a href="#inicio" role="menuitem">Inicio</a></li>
+                <li role="none"><a href="#servicios" role="menuitem">Servicios</a></li>
+                <li role="none"><a href="#marcas" role="menuitem">STO</a></li>
+                <li role="none"><a href="#contacto" role="menuitem">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="inicio" class="hero" aria-label="Carrusel de presentación">
+            <div class="carousel-container">
+                <div class="carousel" aria-live="polite">
+                    <div class="carousel-slide active" role="group" aria-roledescription="slide" aria-label="1 de 8">
+                        <img src="imagen (15).jpg" alt="Hidrogrúa en acción" loading="eager" width="1920" height="1080">
+                        <div class="carousel-content">
+                            <h2>Servicio Técnico Oficial</h2>
+                            <p>Somos Servicio Tecnico Oficial de las empresas: </p>
+                            <ul>
+                                <li>Hidro-Grubert</li>
+                                <li>Palfinger</li>
+                                <li>Hidraulica Movil</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="carousel-slide" role="group" aria-roledescription="slide" aria-label="2 de 8">
+                        <img src="imagen (4).jpg" alt="Mantenimiento profesional">
+                        <div class="carousel-content">
+                            <h2>Mantenimiento y reparaciones</h2>
+                            <p>Garantizamos nuestros servicios tras 25 años de experiencia</p>
+                            <p>Siempre ofreciendo lo mejor para todos nuestros clientes</p>
+                        </div>
+                    </div>
+                    <div class="carousel-slide" role="group" aria-roledescription="slide" aria-label="3 de 8">
+                        <img src="imagen2.jpg" alt="Instalaciones y equipamiento">
+                        <div class="carousel-content">
+                            <h2>Instalaciones Especializadas</h2>
+                            <p>Contamos con el equipamiento necesario para brindar un servicio de calidad</p>
+                        </div>
+                    </div>
+                    <div class="carousel-slide" role="group" aria-roledescription="slide" aria-label="4 de 8">
+                        <img src="imagen7.jpg" alt="Trabajo en campo">
+                        <div class="carousel-content">
+                            <h2>Servicio en Campo</h2>
+                            <p>Brindamos atención tanto en nuestro taller como en el lugar donde se encuentre su equipo</p>
+                        </div>
+                    </div>
+                    <div class="carousel-slide" role="group" aria-roledescription="slide" aria-label="5 de 8">
+                        <img src="imagen (11).jpg" alt="Personal especializado">
+                        <div class="carousel-content">
+                            <h2>Personal Calificado</h2>
+                            <p>Nuestro equipo cuenta con la experiencia y certificaciones necesarias para garantizar un trabajo de calidad</p>
+                        </div>
+                    </div>
+                    <div class="carousel-slide" role="group" aria-roledescription="slide" aria-label="6 de 8">
+                        <img src="imagen (16).jpg" alt="Equipos hidráulicos">
+                        <div class="carousel-content">
+                            <h2>Tecnología de Punta</h2>
+                            <p>Trabajamos con las últimas tecnologías en equipos hidráulicos para asegurar el mejor servicio</p>
+                        </div>
+                    </div>
+                    <div class="carousel-slide" role="group" aria-roledescription="slide" aria-label="7 de 8">
+                        <img src="imagen (14).jpg" alt="Servicio integral">
+                        <div class="carousel-content">
+                            <h2>Servicio Integral</h2>
+                            <p>Ofrecemos soluciones completas para todos sus equipos hidráulicos</p>
+                        </div>
+                    </div>
+                    <div class="carousel-slide" role="group" aria-roledescription="slide" aria-label="8 de 8">
+                        <img src="imagen (8).jpg" alt="Mantenimiento preventivo">
+                        <div class="carousel-content">
+                            <h2>Mantenimiento Preventivo</h2>
+                            <p>Realizamos mantenimiento programado para prevenir fallas y extender la vida útil de sus equipos</p>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-btn prev" aria-label="Anterior slide">&#10094;</button>
+                <button class="carousel-btn next" aria-label="Siguiente slide">&#10095;</button>
+                <div class="carousel-indicators" role="tablist">
+                    <button class="indicator active" role="tab" aria-label="Ir a slide 1" aria-selected="true"></button>
+                    <button class="indicator" role="tab" aria-label="Ir a slide 2" aria-selected="false"></button>
+                    <button class="indicator" role="tab" aria-label="Ir a slide 3" aria-selected="false"></button>
+                    <button class="indicator" role="tab" aria-label="Ir a slide 4" aria-selected="false"></button>
+                    <button class="indicator" role="tab" aria-label="Ir a slide 5" aria-selected="false"></button>
+                    <button class="indicator" role="tab" aria-label="Ir a slide 6" aria-selected="false"></button>
+                    <button class="indicator" role="tab" aria-label="Ir a slide 7" aria-selected="false"></button>
+                    <button class="indicator" role="tab" aria-label="Ir a slide 8" aria-selected="false"></button>
+                </div>
+            </div>
+        </section>
+        <section id="servicios" class="servicios reveal" data-aos="fade-up">
+            <h2>Nuestros Servicios</h2>
+            <div class="servicios-grid">
+                <article class="servicio-card" data-aos="fade-up" data-aos-delay="100">
+                    <h3>Mantenimiento y Reparaciones</h3>
+                    <p>Servicio regular para mantener sus equipos en óptimas condiciones</p>
+                </article>
+                <article class="servicio-card" data-aos="fade-up" data-aos-delay="200">
+                    <h3>Service oficiales y Garantias</h3>
+                    <p>Solución de averías y problemas técnicos</p>
+                </article>
+                <article class="servicio-card" data-aos="fade-up" data-aos-delay="300">
+                    <h3>Implementos hidraulicos en general</h3>
+                    <p>Certificación oficial de equipos</p>
+                </article>
+            </div>
+        </section>
+        <section id="marcas" class="marcas reveal">
+            <h2>Servicio Tecnico Oficial</h2>
+            <div class="marcas-container">
+                <a href="https://www.palfinger.com/es-ar/productos/gruas-articuladas" class="marca">
+                    <img src="hg.png" alt="Hidro Grubert">
+                    <h3>Hidro Grubert</h3>
+                </a>
+                <a href="https://www.palfinger.com" class="marca">
+                    <img src="palfinger.jpeg" alt="Palfinger">
+                    <h3>Palfinger</h3>
+                </a>
+                <a href="https://www.hidraulicamovil.com.ar/" class="marca">
+                    <img src="logo-hm.jpg" alt="Hidráulica Móvil">
+                    <h3>Hidráulica Móvil</h3>
+                </a>
+            </div>
+        </section>
+        <section id="contacto" class="contacto">
+            <h2>Contacto</h2>
+            <form class="form" novalidate>
+                <div class="form-group">
+                    <label for="nombre">Nombre</label>
+                    <input type="text" id="nombre" name="name" required 
+                           aria-required="true" autocomplete="name">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required 
+                           aria-required="true" autocomplete="email">
+                </div>
+                <div class="form-group">
+                    <label for="telefono">Teléfono</label>
+                    <input type="tel" id="telefono" name="phone" required 
+                           aria-required="true" autocomplete="tel">
+                </div>
+                <div class="form-group">
+                    <label for="mensaje">Mensaje</label>
+                    <textarea id="mensaje" name="message" required 
+                            aria-required="true" rows="4"></textarea>
+                </div>
+                <button type="submit" class="submit-btn">
+                    <span>Enviar Mensaje</span>
+                </button>
+            </form>
+        </section>
+
+        <section class="mini-carousel" aria-label="Carrusel de servicios adicionales">
+            <div class="carousel-container">
+                <div class="carousel" aria-live="polite" data-carousel="mini">
+                    <div class="carousel-slide active" role="group" aria-roledescription="slide" aria-label="1 de 6">
+                        <img src="imagen (9).jpg" alt="Trabajo en taller" loading="lazy">
+                    </div>
+                    <div class="carousel-slide" role="group" aria-roledescription="slide" aria-label="2 de 6">
+                        <img src="imagen (8).jpg" alt="Mantenimiento de equipos">
+                    </div>
+                    <div class="carousel-slide" role="group" aria-roledescription="slide" aria-label="3 de 6">
+                        <img src="imagen (14).jpg" alt="Servicio técnico">
+                    </div>
+                    <div class="carousel-slide" role="group" aria-roledescription="slide" aria-label="4 de 6">
+                        <img src="imagen7.jpg" alt="Servicio especializado">
+                    </div>
+                    <div class="carousel-slide" role="group" aria-roledescription="slide" aria-label="5 de 6">
+                        <img src="imagen2.jpg" alt="Equipamiento especializado">
+                    </div>
+                    <div class="carousel-slide" role="group" aria-roledescription="slide" aria-label="6 de 6">
+                        <img src="imagen (1).jpg" alt="Mantenimiento preventivo">
+                    </div>
+                </div>
+                <button class="carousel-btn prev" aria-label="Anterior slide" data-carousel-btn="prev">&#10094;</button>
+                <button class="carousel-btn next" aria-label="Siguiente slide" data-carousel-btn="next">&#10095;</button>
+                <div class="carousel-indicators" role="tablist">
+                    <button class="indicator active" role="tab" aria-label="Ir a slide 1" aria-selected="true"></button>
+                    <button class="indicator" role="tab" aria-label="Ir a slide 2" aria-selected="false"></button>
+                    <button class="indicator" role="tab" aria-label="Ir a slide 3" aria-selected="false"></button>
+                    <button class="indicator" role="tab" aria-label="Ir a slide 4" aria-selected="false"></button>
+                    <button class="indicator" role="tab" aria-label="Ir a slide 5" aria-selected="false"></button>
+                    <button class="indicator" role="tab" aria-label="Ir a slide 6" aria-selected="false"></button>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer style="background-color: black;">
+        <div class="footer-content">
+            <div class="footer-branding">
+                <div class="footer-logo">
+                    <img src="EAD negro.png" alt="EAD - Enzo A. Deux" width="80" height="80" loading="lazy">
+                </div>
+                <div class="contacto-info">
+                    <h3>Información de Contacto</h3>
+                    <p><i class="fas fa-envelope" aria-hidden="true"></i> 
+                        <a href="mailto:enzoadeux@gmail.com">enzoadeux@gmail.com</a></p>
+                    <p><i class="fas fa-envelope" aria-hidden="true"></i> 
+                        <a href="mailto:hydropampa@hotmail.com">hydropampa@hotmail.com</a></p>
+                    <p><i class="fas fa-phone" aria-hidden="true"></i> 
+                        <a href="tel:+542302592703">+54 2302 - 592703</a></p>
+                    <p><i class="fas fa-map-marker-alt" aria-hidden="true"></i> 
+                        <a href="https://maps.google.com/?q=España 245, Colonia Baron, La Pampa" 
+                           target="_blank" rel="noopener noreferrer">
+                            España 245 - Colonia Baron - La Pampa
+                        </a>
+                    </p>
+                    <p><i class="fab fa-instagram" aria-hidden="true"></i> 
+                        <a href="https://www.instagram.com/oleohidraulica_ead/?hl=es" target="_blank" rel="noopener noreferrer">
+                            Oleohidraulica EAD
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; <time datetime="2024">2024</time> EAD - Todos los derechos reservados</p>
+        </div>
+    </footer>
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+    
+                const target = document.querySelector(this.getAttribute('href'));
+                const headerOffset = document.querySelector('header').offsetHeight; // Altura del header
+                const elementPosition = target.getBoundingClientRect().top; // Posición del elemento
+                const offsetPosition = elementPosition + window.pageYOffset - headerOffset; // Ajustar la posición
+    
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth' // Desplazamiento suave
+                });
+            });
+        });
+    </script>
+</body>
+</html> 
