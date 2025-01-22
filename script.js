@@ -563,5 +563,38 @@
         document.querySelectorAll('.carousel').forEach(carousel => {
             initCarousel(carousel);
         });
+
+        // Menú móvil
+        const menuToggle = document.querySelector('.menu-toggle');
+        const menu = document.querySelector('.menu');
+        
+        menuToggle.addEventListener('click', function() {
+            menu.classList.toggle('active');
+            menuToggle.setAttribute('aria-expanded', 
+                menuToggle.getAttribute('aria-expanded') === 'false' ? 'true' : 'false'
+            );
+        });
+
+        // Cerrar menú al hacer clic en un enlace
+        document.querySelectorAll('.menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                menu.classList.remove('active');
+                menuToggle.setAttribute('aria-expanded', 'false');
+            });
+        });
+
+        // Cerrar menú al hacer clic fuera
+        document.addEventListener('click', (e) => {
+            if (!menu.contains(e.target) && !menuToggle.contains(e.target)) {
+                menu.classList.remove('active');
+                menuToggle.setAttribute('aria-expanded', 'false');
+            }
+        });
+
+        // Inicializar AOS
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
     });
 })(); 

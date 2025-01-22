@@ -5,14 +5,22 @@
     --gris-medio: #4e4c4c;
     --acento-metalico: #D4D4D4;
     --texto-claro: #F5F5F5;
+    --texto-oscuro: #333333;
+    --background-header: rgb(0, 0, 0);
     --sombra-suave: 0 4px 6px rgba(0, 0, 0, 0.1);
     --gradiente-oscuro: linear-gradient(135deg, var(--gris-oscuro) 0%, var(--hidro-azul) 100%);
     --transicion-suave: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     --blur-fondo: blur(10px);
+    --header-height: 70px;
+    --primary-color: #E31E24;
+    --background-color: #fff;
+    --text-color: #333;
+    --padding-mobile: 1rem;
+    --max-width: 1200px;
 }
 
 body {
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     line-height: 1.6;
     background-color: var(--gris-oscuro);
     color: var(--texto-claro);
@@ -103,8 +111,9 @@ h1, h2, h3, h4, h5, h6 {
 
 .carousel-slide img {
     width: 100%;
-    height: 100%;
+    height: 100vh;
     object-fit: cover;
+    object-position: center;
     transform: scale(1.05);
     transition: transform 1.2s ease;
     will-change: transform;
@@ -177,6 +186,10 @@ h1, h2, h3, h4, h5, h6 {
         right: 5%;
         max-width: none;
     }
+
+    .carousel-slide img {
+        height: 60vh;
+    }
 }
 
 /* Sobre Nosotros */
@@ -233,7 +246,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Actualización de estilos existentes */
 .servicio-card {
-    background: rgba(26, 26, 26, 0.7);
+    background: rgba(0, 0, 0, 0.7) !important;
     padding: 2.5rem;
     border-radius: 15px;
     border: 1px solid rgba(255, 255, 255, 0.1);
@@ -244,11 +257,17 @@ h1, h2, h3, h4, h5, h6 {
                 background-color 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     transform: translateY(0) scale(1);
     will-change: transform, box-shadow;
+    color: var(--texto-claro);
+}
+
+.servicio-card h3,
+.servicio-card p {
+    color: var(--texto-claro) !important;
 }
 
 .servicio-card:hover {
     transform: translateY(-10px) scale(1.02);
-    background: rgba(27, 60, 89, 0.4);
+    background: rgba(27, 60, 89, 0.8) !important;
     border-color: var(--palfinger-rojo);
     box-shadow: 
         0 20px 40px rgba(0,0,0,0.2),
@@ -256,7 +275,6 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .servicio-card h3 {
-    color: var(--texto-claro);
     font-size: 1.5rem;
     margin-bottom: 1rem;
     position: relative;
@@ -276,6 +294,10 @@ h1, h2, h3, h4, h5, h6 {
 
 .servicio-card:hover h3::after {
     width: 100px;
+}
+
+.servicio-card p {
+    font-size: 1rem;
 }
 
 /* Botones actualizados */
@@ -303,13 +325,14 @@ header {
     width: 100%;
     top: 0;
     z-index: 1000;
-    height: 90px;
-    background: rgb(0, 0, 0);
+    height: var(--header-height);
+    background: var(--background-header);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
     border-bottom: 2px solid rgba(227, 30, 36, 0.3);
 }
 
 header.scrolled {
-    background: rgb(0, 0, 0);
+    background: var(--background-header);
 }
 
 header::before {
@@ -319,7 +342,7 @@ header::before {
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgb(0, 0, 0);
+    background: var(--background-header);
     z-index: -1;
 }
 
@@ -354,10 +377,10 @@ nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 5%;
-    max-width: 1200px;
+    padding: 0.5rem var(--padding-mobile);
+    max-width: var(--max-width);
     margin: 0 auto;
-    height: 90px;
+    height: 100%;
 }
 
 .logo {
@@ -367,14 +390,13 @@ nav {
 }
 
 .logo img {
-    height: 60px;
-    width: auto;
-    filter: none;
+    width: 45px;
+    height: auto;
+    transition: var(--transicion-suave);
 }
 
 .logo-info {
-    border-left: 2px solid var(--palfinger-rojo);
-    padding-left: 1rem;
+    display: none;
 }
 
 .logo-info h1 {
@@ -390,13 +412,37 @@ nav {
 
 .logo-info p {
     font-size: 0.8rem;
-    color: var(--acento-metalico);
+    color: var(--texto-claro);
     margin: 0;
 }
 
 .menu {
+    position: fixed;
+    top: var(--header-height);
+    left: -100%;
+    width: 100%;
+    height: calc(100vh - var(--header-height));
+    background: var(--background-header);
+    padding: 2rem;
+    transition: 0.3s;
     display: flex;
+    flex-direction: column;
     gap: 2rem;
+}
+
+.menu.active {
+    left: 0;
+}
+
+.menu li {
+    list-style: none;
+}
+
+.menu a {
+    color: var(--text-color);
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: 500;
 }
 
 .menu li a {
@@ -472,13 +518,9 @@ nav {
 
 .servicios-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: 1fr;
     gap: 2rem;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 2rem;
-    position: relative;
-    z-index: 2;
+    margin-top: 2rem;
 }
 
 /* Sección Marcas */
@@ -496,12 +538,10 @@ nav {
 .marcas-container {
     position: relative;
     z-index: 2;
-    display: flex;
-    justify-content: center;
-    gap: 4rem;
-    flex-wrap: wrap;
-    max-width: 1200px;
-    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    margin-top: 2rem;
 }
 
 .marca {
@@ -534,10 +574,11 @@ nav {
 }
 
 .marca img {
-    max-width: 200px;
+    max-width: 150px;
+    width: 100%;
     height: auto;
-    transition: var(--transicion-suave);
-    filter: grayscale(20%);
+    margin: 0 auto;
+    transition: transform 0.3s ease;
 }
 
 .marca:hover img {
@@ -584,7 +625,7 @@ nav {
 .form-group textarea {
     width: 100%;
     padding: 1rem;
-    border: 2px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 8px;
     background: rgba(255, 255, 255, 0.05);
     color: var(--texto-claro);
@@ -778,7 +819,7 @@ footer {
 .footer-content {
     position: relative;
     z-index: 2;
-    max-width: 800px;
+    max-width: var(--max-width);
     margin: 0 auto;
     padding: 3rem;
     text-align: center;
@@ -809,8 +850,9 @@ footer {
 }
 
 .footer-logo img {
-    height: 180px;
-    width: auto;
+    height: auto;
+    width: 100px;
+    margin: 0 auto;
     filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.3));
     transition: transform 0.3s ease;
     display: block;
@@ -1085,26 +1127,21 @@ a {
 
 /* Estilos para el menú móvil */
 .menu-toggle {
-    display: none;
-    flex-direction: column;
-    justify-content: space-around;
-    width: 30px;
-    height: 25px;
-    background: transparent;
+    display: block;
+    background: none;
     border: none;
+    padding: 0.5rem;
     cursor: pointer;
-    padding: 0;
-    z-index: 10;
+    z-index: 100;
 }
 
 .menu-toggle span {
-    width: 30px;
+    display: block;
+    width: 25px;
     height: 3px;
     background: var(--texto-claro);
-    border-radius: 10px;
-    transition: all 0.3s linear;
-    position: relative;
-    transform-origin: 1px;
+    margin: 5px 0;
+    transition: 0.3s;
 }
 
 @media (max-width: 768px) {
@@ -1567,5 +1604,160 @@ img.loaded {
     .carousel-indicators .indicator {
         width: 8px;
         height: 8px;
+    }
+}
+
+/* Reset y estilos base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* Secciones */
+section {
+    padding: 4rem var(--padding-mobile);
+    margin-top: var(--header-height);
+}
+
+.servicios-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.servicio-card {
+    background: #f5f5f5;
+    padding: 1.5rem;
+    border-radius: 8px;
+    text-align: center;
+}
+
+/* Marcas */
+.marcas-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.marca {
+    text-align: center;
+    text-decoration: none;
+    color: var(--text-color);
+}
+
+.marca img {
+    width: 100%;
+    max-width: 200px;
+    height: auto;
+    margin: 0 auto;
+}
+
+/* Formulario */
+.form {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-family: inherit;
+}
+
+/* Footer */
+footer {
+    padding: 2rem var(--padding-mobile);
+    color: white;
+}
+
+.footer-content {
+    max-width: var(--max-width);
+    margin: 0 auto;
+}
+
+.contacto-info {
+    margin-top: 1.5rem;
+}
+
+.contacto-info a {
+    color: white;
+    text-decoration: none;
+}
+
+/* Media Queries */
+@media (min-width: 768px) {
+    :root {
+        --padding-mobile: 2rem;
+    }
+
+    .menu-toggle {
+        display: none;
+    }
+
+    .logo-info {
+        display: block;
+    }
+
+    .menu {
+        position: static;
+        height: auto;
+        flex-direction: row;
+        padding: 0;
+        background: transparent;
+        width: auto;
+    }
+
+    .menu li {
+        margin-left: 2rem;
+    }
+
+    .servicios-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .marcas-container {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .carousel-content {
+        bottom: 30%;
+    }
+}
+
+@media (min-width: 1024px) {
+    :root {
+        --padding-mobile: 3rem;
+    }
+
+    .logo img {
+        width: 60px;
     }
 }
