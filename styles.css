@@ -540,20 +540,27 @@ nav {
     z-index: 2;
     display: grid;
     grid-template-columns: 1fr;
-    gap: 2rem;
+    gap: 1.5rem;
     margin-top: 2rem;
+    padding: 0.5rem;
 }
 
 .marca {
     text-align: center;
-    background: rgba(26, 26, 26, 0.5);
-    padding: 2.5rem;
+    background: linear-gradient(135deg, 
+        rgba(255, 255, 255, 0.5) 0%,
+        rgba(0, 0, 0, 0.5) 100%);
+    padding: 0.5rem;
     border-radius: 15px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(240, 240, 240, 0.455);
     backdrop-filter: blur(10px);
     transition: var(--transicion-suave);
     position: relative;
     overflow: hidden;
+    min-height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .marca::before {
@@ -563,27 +570,36 @@ nav {
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(45deg, var(--palfinger-rojo), var(--hidro-azul));
+    background: linear-gradient(75deg, 
+        rgba(255, 255, 255, 0.2),
+        rgba(0, 0, 0, 0.2));
     opacity: 0;
     transition: var(--transicion-suave);
     z-index: -1;
 }
 
 .marca:hover::before {
-    opacity: 0.1;
+    opacity: 1;
 }
 
 .marca img {
-    max-width: 150px;
+    max-width: 800px;
     width: 100%;
     height: auto;
-    margin: 0 auto;
     transition: transform 0.3s ease;
+    object-fit: contain;
 }
 
 .marca:hover img {
     filter: grayscale(0%);
     transform: scale(1.05);
+}
+
+.marca h3 {
+    font-size: 1.4rem;
+    color: var(--texto-claro);
+    margin-top: 1rem;
+    padding-bottom: 1rem;
 }
 
 /* Sección Contacto Mejorada */
@@ -1105,7 +1121,6 @@ h2, h3, h4, h5, h6 {
     width: 100px;
     height: 3px;
     background: var(--palfinger-rojo);
-    opacity: 0.8;
 }
 
 /* Ajuste de enlaces sin subrayado */
@@ -1759,5 +1774,25 @@ footer {
 
     .logo img {
         width: 60px;
+    }
+}
+
+@media (min-width: 768px) {
+    .marca {
+        min-height: 100px;
+    }
+
+    .marca img {
+        max-width: 900px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .marca {
+        min-height: 120px;
+    }
+
+    .marca img {
+        max-width: 1000px;
     }
 }
