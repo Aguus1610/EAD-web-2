@@ -199,13 +199,115 @@ nav {
     content: '';
     position: absolute;
     inset: 0;
-    background: radial-gradient(circle at center, transparent 0%, rgba(0,0,0,0.7) 100%);
+    background: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.7));
     z-index: 1;
 }
 
-.carousel-slide.active img {
-    transform: scale(1.1);
-    transition: transform 8s ease-out;
+.carousel-content {
+    position: absolute;
+    bottom: 15%;
+    left: 10%;
+    right: 10%;
+    z-index: 2;
+    color: var(--texto-claro);
+    text-align: left;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.5s ease;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(10px);
+    padding: 1.5rem;
+    border-radius: 15px;
+    border: var(--borde-brillante);
+    max-width: 600px;
+    margin: 0;
+}
+
+.carousel-slide.active .carousel-content {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.carousel-content h2 {
+    background: linear-gradient(135deg, var(--hidro-azul) 20%, var(--palfinger-rojo) 60%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 700;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    font-size: 1.8rem;
+    margin-bottom: 0.8rem;
+}
+
+.carousel-content p {
+    font-size: 1rem;
+    margin-bottom: 0.8rem;
+    line-height: 1.4;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+}
+
+.carousel-content ul {
+    list-style: none;
+    padding: 0;
+    margin: 0.5rem 0;
+}
+
+.carousel-content ul li {
+    font-size: 0.9rem;
+    margin: 0.3rem 0;
+    padding-left: 1.2rem;
+    position: relative;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+}
+
+.carousel-content ul li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: var(--palfinger-rojo);
+}
+
+@media (max-width: 768px) {
+    .carousel-content {
+        bottom: 10%;
+        left: 5%;
+        right: 5%;
+        padding: 1.2rem;
+    }
+
+    .carousel-content h2 {
+        font-size: 1.5rem;
+    }
+
+    .carousel-content p {
+        font-size: 0.9rem;
+    }
+
+    .carousel-content ul li {
+        font-size: 0.85rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .carousel-content {
+        bottom: 8%;
+        padding: 1rem;
+    }
+
+    .carousel-content h2 {
+        font-size: 1.3rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .carousel-content p {
+        font-size: 0.85rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .carousel-content ul li {
+        font-size: 0.8rem;
+        margin: 0.2rem 0;
+    }
 }
 
 /* Servicios */
@@ -274,7 +376,7 @@ nav {
 }
 
 .servicio-card h3 {
-    background: var(--gradiente-principal);
+    background: linear-gradient(135deg, var(--hidro-azul) 20%, var(--palfinger-rojo) 60%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -292,13 +394,15 @@ nav {
 }
 
 .marcas h2 {
-    text-align: center;
-    margin-bottom: 4rem;
-    font-size: 2.5rem;
-    background: var(--gradiente-principal);
+    background: linear-gradient(135deg, var(--hidro-azul) 20%, var(--palfinger-rojo) 60%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
+    font-weight: 700;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    text-align: center;
+    margin-bottom: 4rem;
+    font-size: 2.5rem;
     position: relative;
 }
 
@@ -319,14 +423,14 @@ nav {
     margin: 0 auto;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 3rem;
-    padding: 0 2rem;
+    gap: 1rem;
+    padding: 0 1rem;
 }
 
 .marca {
-    background: rgba(255, 255, 255, 0.03);
-    padding: 3rem 2rem;
-    border-radius: 15px;
+    background: rgba(255, 255, 255, 0.15);
+    padding: 0;
+    border-radius: 12px;
     text-align: center;
     transition: var(--transicion-media);
     border: var(--borde-brillante);
@@ -338,9 +442,11 @@ nav {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 2rem;
     cursor: pointer;
     text-decoration: none;
+    width: fit-content;
+    margin: 0 auto;
+    line-height: 0;
 }
 
 .marca:hover {
@@ -351,29 +457,32 @@ nav {
 
 .marca img {
     width: 100%;
-    max-width: 200px;
+    max-width: 340px;
     height: auto;
     object-fit: contain;
     transition: var(--transicion-media);
     filter: none;
     transform-origin: center;
+    padding: 0;
+    margin: 0;
+    display: block;
+    line-height: 0;
 }
 
-.marca:hover img {
-    transform: scale(1.05);
-    filter: drop-shadow(0 10px 20px rgba(227, 30, 36, 0.3));
+/* Ajuste específico para el logo de Hidro-Grubert */
+.marca:first-child img {
+    max-width: 380px;
 }
 
 .marca h3 {
     font-size: 1.8rem;
     margin-top: 1rem;
-    background: var(--gradiente-principal);
+    background: linear-gradient(135deg, var(--hidro-azul) 20%, var(--palfinger-rojo) 60%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
     transition: var(--transicion-media);
     position: relative;
-    text-decoration: none;
 }
 
 .marca a {
@@ -416,31 +525,42 @@ nav {
 
 /* Media queries para responsividad */
 @media (max-width: 1200px) {
-    .marcas-container {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 2rem;
+    .marca img {
+        max-width: 300px;
+    }
+    
+    .marca:first-child img {
+        max-width: 340px;
     }
 }
 
 @media (max-width: 768px) {
     .marcas-container {
         grid-template-columns: repeat(2, 1fr);
-        gap: 1.5rem;
+        gap: 0.8rem;
     }
     
-    .marca {
-        padding: 2rem;
+    .marca img {
+        max-width: 260px;
+    }
+    
+    .marca:first-child img {
+        max-width: 300px;
     }
 }
 
 @media (max-width: 480px) {
     .marcas-container {
         grid-template-columns: 1fr;
-        gap: 1.5rem;
+        gap: 0.8rem;
     }
     
     .marca img {
-        max-width: 150px;
+        max-width: 280px;
+    }
+    
+    .marca:first-child img {
+        max-width: 320px;
     }
 }
 
@@ -694,7 +814,7 @@ footer::after {
     padding-bottom: 0.8rem;
     text-transform: uppercase;
     letter-spacing: 1.5px;
-    background: var(--gradiente-principal);
+    background: linear-gradient(135deg, var(--hidro-azul) 20%, var(--palfinger-rojo) 60%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
