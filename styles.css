@@ -175,6 +175,51 @@ nav {
     width: 100%;
     height: 100vh;
     overflow: hidden;
+    mask-image: linear-gradient(
+        to bottom,
+        transparent 0%,
+        black 25%,
+        black 75%,
+        transparent 100%
+    );
+    -webkit-mask-image: linear-gradient(
+        to bottom,
+        transparent 0%,
+        black 25%,
+        black 75%,
+        transparent 100%
+    );
+}
+
+.carousel-container::before,
+.carousel-container::after,
+.mini-carousel .carousel-container::before,
+.mini-carousel .carousel-container::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 150px;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.carousel-container::before {
+    top: 0;
+    background: linear-gradient(to bottom,
+        rgba(26, 26, 26, 0.8) 0%,
+        rgba(17, 73, 122, 0.4) 40%,
+        transparent 100%
+    );
+}
+
+.carousel-container::after {
+    bottom: 0;
+    background: linear-gradient(to top,
+        rgba(26, 26, 26, 0.8) 0%,
+        rgba(227, 30, 36, 0.4) 40%,
+        transparent 100%
+    );
 }
 
 .carousel-slide {
@@ -312,11 +357,12 @@ nav {
 
 /* Servicios */
 .servicios {
-    padding: 6rem 2rem;
+    padding: 4rem 2rem;
     position: relative;
     overflow: hidden;
     background: transparent;
     z-index: 1;
+    margin-top: 2rem;
 }
 
 .servicios::before {
@@ -386,7 +432,7 @@ nav {
 
 /* Sección de Marcas */
 .marcas {
-    padding: 6rem 2rem;
+    padding: 4rem 2rem;
     position: relative;
     overflow: hidden;
     background: transparent;
@@ -429,7 +475,7 @@ nav {
 
 .marca {
     background: rgba(255, 255, 255, 0.15);
-    padding: 0;
+    padding: 0.5rem;
     border-radius: 12px;
     text-align: center;
     transition: var(--transicion-media);
@@ -444,50 +490,16 @@ nav {
     justify-content: center;
     cursor: pointer;
     text-decoration: none;
-    width: fit-content;
+    width: 400px;
+    height: 180px;
     margin: 0 auto;
-    line-height: 0;
 }
 
 .marca:hover {
     transform: translateY(-10px);
     box-shadow: var(--sombra-elevacion);
     border-color: rgba(227, 30, 36, 0.3);
-}
-
-.marca img {
-    width: 100%;
-    max-width: 340px;
-    height: auto;
-    object-fit: contain;
-    transition: var(--transicion-media);
-    filter: none;
-    transform-origin: center;
-    padding: 0;
-    margin: 0;
-    display: block;
-    line-height: 0;
-}
-
-/* Ajuste específico para el logo de Hidro-Grubert */
-.marca:first-child img {
-    max-width: 380px;
-}
-
-.marca h3 {
-    font-size: 1.8rem;
-    margin-top: 1rem;
-    background: linear-gradient(135deg, var(--hidro-azul) 20%, var(--palfinger-rojo) 60%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    transition: var(--transicion-media);
-    position: relative;
-}
-
-.marca a {
-    text-decoration: none;
-    color: inherit;
+    background: rgba(255, 255, 255, 0.25);
 }
 
 .marca::before {
@@ -523,44 +535,70 @@ nav {
     opacity: 0.3;
 }
 
+.marca img {
+    width: auto;
+    height: 100%;
+    max-height: 160px;
+    object-fit: contain;
+    transition: var(--transicion-media);
+    filter: none;
+    transform-origin: center;
+    padding: 0;
+    margin: 0;
+    display: block;
+}
+
+/* Ajustes específicos para el primer y último logo */
+.marca:first-child img,
+.marca:last-child img {
+    max-height: 600px;
+    transform: scale(3);
+    margin-top: -120px;
+    margin-bottom: -120px;
+}
+
+.marca:hover img {
+    filter: drop-shadow(0 10px 20px rgba(227, 30, 36, 0.3));
+}
+
 /* Media queries para responsividad */
 @media (max-width: 1200px) {
-    .marca img {
-        max-width: 300px;
-    }
-    
-    .marca:first-child img {
-        max-width: 340px;
+    .marca:first-child img,
+    .marca:last-child img {
+        max-height: 500px;
+        transform: scale(2.7);
+        margin-top: -100px;
+        margin-bottom: -100px;
     }
 }
 
 @media (max-width: 768px) {
     .marcas-container {
         grid-template-columns: repeat(2, 1fr);
-        gap: 0.8rem;
+        gap: 1rem;
     }
     
-    .marca img {
-        max-width: 260px;
-    }
-    
-    .marca:first-child img {
-        max-width: 300px;
+    .marca:first-child img,
+    .marca:last-child img {
+        max-height: 450px;
+        transform: scale(2.4);
+        margin-top: -90px;
+        margin-bottom: -90px;
     }
 }
 
 @media (max-width: 480px) {
     .marcas-container {
         grid-template-columns: 1fr;
-        gap: 0.8rem;
+        gap: 1rem;
     }
     
-    .marca img {
-        max-width: 280px;
-    }
-    
-    .marca:first-child img {
-        max-width: 320px;
+    .marca:first-child img,
+    .marca:last-child img {
+        max-height: 400px;
+        transform: scale(2.2);
+        margin-top: -80px;
+        margin-bottom: -80px;
     }
 }
 
@@ -984,20 +1022,44 @@ footer::after {
     position: relative;
     background: transparent;
     z-index: 1;
+    padding: 2rem 0;
+    margin: 2rem 0;
 }
 
-.mini-carousel::before {
-    content: '';
-    position: absolute;
+.mini-carousel .carousel-container {
+    height: 60vh;
+    mask-image: linear-gradient(
+        to bottom,
+        transparent 0%,
+        black 5%,
+        black 95%,
+        transparent 100%
+    );
+    -webkit-mask-image: linear-gradient(
+        to bottom,
+        transparent 0%,
+        black 5%,
+        black 95%,
+        transparent 100%
+    );
+}
+
+.mini-carousel .carousel-container::before {
     top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: 
-        radial-gradient(circle at 20% 20%, rgba(227, 30, 36, 0.15) 0%, transparent 50%),
-        radial-gradient(circle at 80% 80%, rgba(17, 73, 122, 0.15) 0%, transparent 50%);
-    pointer-events: none;
-    z-index: -1;
+    display: block;
+    background: linear-gradient(to bottom,
+        rgba(26, 26, 26, 0.5) 0%,
+        transparent 50%
+    );
+}
+
+.mini-carousel .carousel-container::after {
+    bottom: 0;
+    display: block;
+    background: linear-gradient(to top,
+        rgba(26, 26, 26, 0.5) 0%,
+        transparent 50%
+    );
 }
 
 .social-links {
@@ -1018,4 +1080,294 @@ footer::after {
     color: var(--palfinger-rojo);
     transform: translateY(-5px);
     filter: drop-shadow(0 0 10px rgba(227, 30, 36, 0.5));
+}
+
+.carousel-container::after,
+.mini-carousel::before,
+.mini-carousel::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    width: 80%;
+    height: 2px;
+    background: linear-gradient(90deg, 
+        transparent,
+        rgba(227, 30, 36, 0.3),
+        rgba(17, 73, 122, 0.3),
+        transparent
+    );
+    transform: translateX(-50%);
+}
+
+.carousel-container::after {
+    bottom: -3rem;
+}
+
+.mini-carousel::before {
+    top: 0;
+}
+
+.mini-carousel::after {
+    bottom: 0;
+}
+
+/* Ajuste del margen superior de servicios para el separador */
+.servicios {
+    margin-top: 2rem;
+}
+
+/* Ajuste del espacio entre secciones */
+.marcas,
+.contacto {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+    position: relative;
+}
+
+.marcas::after,
+.contacto::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    width: 80%;
+    height: 2px;
+    background: linear-gradient(90deg, 
+        transparent,
+        rgba(227, 30, 36, 0.3),
+        rgba(17, 73, 122, 0.3),
+        transparent
+    );
+    transform: translateX(-50%);
+}
+
+.marcas::after {
+    bottom: 0;
+}
+
+.contacto::before {
+    top: 0;
+}
+
+/* Efecto de brillo en los separadores */
+@keyframes separatorGlow {
+    0%, 100% {
+        opacity: 0.3;
+        filter: blur(2px);
+    }
+    50% {
+        opacity: 0.5;
+        filter: blur(3px);
+    }
+}
+
+.carousel-container::after,
+.mini-carousel::before,
+.mini-carousel::after,
+.marcas::after,
+.contacto::before {
+    animation: separatorGlow 3s ease-in-out infinite;
+}
+
+/* Ajustes responsive */
+@media (max-width: 768px) {
+    .carousel-container,
+    .mini-carousel .carousel-container {
+        mask-image: linear-gradient(
+            to bottom,
+            transparent 0%,
+            black 15%,
+            black 85%,
+            transparent 100%
+        );
+        -webkit-mask-image: linear-gradient(
+            to bottom,
+            transparent 0%,
+            black 15%,
+            black 85%,
+            transparent 100%
+        );
+    }
+}
+
+@media (max-width: 480px) {
+    .carousel-container,
+    .mini-carousel .carousel-container {
+        mask-image: linear-gradient(
+            to bottom,
+            transparent 0%,
+            black 12%,
+            black 88%,
+            transparent 100%
+        );
+        -webkit-mask-image: linear-gradient(
+            to bottom,
+            transparent 0%,
+            black 12%,
+            black 88%,
+            transparent 100%
+        );
+    }
+}
+
+/* Separadores entre secciones */
+.carousel-container::after,
+.servicios::before,
+.servicios::after,
+.marcas::before,
+.marcas::after,
+.mini-carousel::before,
+.mini-carousel::after,
+.contacto::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    width: 80%;
+    height: 3px;
+    background: linear-gradient(90deg, 
+        transparent,
+        rgba(227, 30, 36, 0.4),
+        rgba(17, 73, 122, 0.4),
+        rgba(227, 30, 36, 0.4),
+        transparent
+    );
+    transform: translateX(-50%);
+    filter: blur(1px);
+    animation: separatorGlow 3s ease-in-out infinite;
+}
+
+.carousel-container::after {
+    bottom: 0;
+}
+
+.servicios::before {
+    top: 0;
+}
+
+.servicios::after {
+    bottom: 0;
+}
+
+.marcas::before {
+    top: 0;
+}
+
+.marcas::after {
+    bottom: 0;
+}
+
+.mini-carousel::before {
+    top: 0;
+}
+
+.mini-carousel::after {
+    bottom: 0;
+}
+
+.contacto::before {
+    top: 0;
+}
+
+@keyframes separatorGlow {
+    0%, 100% {
+        opacity: 0.4;
+        filter: blur(1px);
+    }
+    50% {
+        opacity: 0.6;
+        filter: blur(2px);
+    }
+}
+
+/* Ajustes responsive */
+@media (max-width: 768px) {
+    .carousel-container::before,
+    .carousel-container::after {
+        height: 100px;
+    }
+    
+    .mini-carousel .carousel-container::before,
+    .mini-carousel .carousel-container::after {
+        height: 80px;
+    }
+
+    .carousel-container::before,
+    .carousel-container::after {
+        height: 100px;
+    }
+    
+    .mini-carousel .carousel-container::before,
+    .mini-carousel .carousel-container::after {
+        height: 80px;
+    }
+
+    .carousel-container::after,
+    .servicios::before,
+    .servicios::after,
+    .marcas::before,
+    .marcas::after,
+    .mini-carousel::before,
+    .mini-carousel::after,
+    .contacto::before {
+        width: 90%;
+    }
+}
+
+@media (max-width: 480px) {
+    .carousel-container::before,
+    .carousel-container::after {
+        height: 80px;
+    }
+    
+    .mini-carousel .carousel-container::before,
+    .mini-carousel .carousel-container::after {
+        height: 60px;
+    }
+
+    .carousel-container::before,
+    .carousel-container::after {
+        height: 80px;
+    }
+    
+    .mini-carousel .carousel-container::before,
+    .mini-carousel .carousel-container::after {
+        height: 60px;
+    }
+
+    .carousel-container::after,
+    .servicios::before,
+    .servicios::after,
+    .marcas::before,
+    .marcas::after,
+    .mini-carousel::before,
+    .mini-carousel::after,
+    .contacto::before {
+        width: 95%;
+    }
+}
+
+/* Ajustes responsive */
+@media (max-width: 768px) {
+    .servicios,
+    .marcas,
+    .contacto {
+        padding: 3rem 2rem;
+    }
+
+    .mini-carousel {
+        padding: 1.5rem 0;
+        margin: 1.5rem 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .servicios,
+    .marcas,
+    .contacto {
+        padding: 2.5rem 1.5rem;
+    }
+
+    .mini-carousel {
+        padding: 1rem 0;
+        margin: 1rem 0;
+    }
 }
