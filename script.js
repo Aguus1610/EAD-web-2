@@ -326,9 +326,9 @@
         },
 
         setupSmoothScroll() {
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', (e) => {
-            e.preventDefault();
+                    e.preventDefault();
                     this.scrollToTarget(anchor.getAttribute('href'));
                     this.updateActiveMenuItem(anchor);
                 });
@@ -597,4 +597,4 @@
             once: true
         });
     });
-})(); 
+})();
